@@ -1,0 +1,24 @@
+name: docker build and push
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-push:        # ✅ Bug 1 fix: jobs: এর নিচে indent করা
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4  # ✅ Bug 2 fix: actions (plural) + @v4
+
+      - name: login to docker
+        uses: docker/login-action@v3  # ✅ @v3
+        with:
+          username: ${{ vars.DOCKERHUB_USER }}  # ✅ Bug 3 fix: vars (plural)
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: build and push to docker hub
+        uses: docker/build-push-action@v6
+        with:
+          push: true   # ✅ Bug 4 fix: true না ture
+          tags: |      # ✅ Bug 5 fix: colon আছে, multi-tag এর জন্য | ব্যবহার
+            ${{ vars.DOCKERHUB_USER }}/myapp:latest
+            ${{ vars.DOCKERHUB_USER }}/myapp:${{ github.sha }}
