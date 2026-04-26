@@ -1,5 +1,0 @@
-services:
-  web:
-    image: fahim017803/github-action-app:latest
-    ports:
-      - "80:80"
