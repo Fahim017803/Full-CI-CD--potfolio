@@ -19,6 +19,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true   # ✅ Bug 4 fix: true না ture
-          tags: |      # ✅ Bug 5 fix: colon আছে, multi-tag এর জন্য | ব্যবহার
-            ${{ vars.DOCKERHUB_USER }}/myapp:latest
-            ${{ vars.DOCKERHUB_USER }}/myapp:${{ github.sha }}
+         tags: |
+            fahim017803/github-action-app:latest
+            fahim017803/github-action-app:${{ github.sha }}
