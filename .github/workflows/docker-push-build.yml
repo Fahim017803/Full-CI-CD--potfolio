@@ -20,5 +20,5 @@ jobs:
         with:
           push: true
           tags: |
-            fahim017803/github-action-app:latest
-            fahim017803/github-action-app:${{ github.sha }}
+            fahim017803/myapp:latest
+            fahim017803/myapp:${{ github.sha }}
